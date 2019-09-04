@@ -1,12 +1,43 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style media="screen">
+  #attd_container{
+    margin: auto;
+    margin-top:-150px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
+    /* border-radius: 3px; */
+    /* border: 2px solid black; */
+    background-color: #FFFFFF;
+    padding:70px;
+    /* text-indent: 15px; */
+    text-align: left;
+    border-radius: 5px;
+  }
+  #attdForm{
+    padding-left: 110px;
+    margin-top: auto;
+  }
+  h1{
+    padding-left: 100px;
+    color:#158305;
+    style:strong;
+  }
+  #sub{
+      margin-top: 10px;
+      margin-left: 45px;
+  }
+</style>
 <div id="attd_container">
-<h1>Welcome!</h1>
+<h1>Welcome to YESIST12!</h1>
 <form id = "attdForm">
     <ul id = "members">
     <!-- <input type="checkbox"  name="4" id="4" data-toggle="toggle" data-onstyle="default"  data-width="500%" > -->
     <!-- <label for="4">fasdfdsa</label> -->
     </ul>
-    <input class="cbtn" class="btn_bt_right" type ='submit' >
+    <input id="sub"class="cbtn" class="btn_bt_right" type ='submit' >
 </form>
 </div>
 

@@ -6,6 +6,13 @@
 
 body {
   font: 16px Arial;
+  background-image: url("background4.png");
+  background-color: #cccccc;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 /*the container must be positioned relative:*/
@@ -60,29 +67,71 @@ input[type=submit] {
 .autocomplete-active {
   background-color: DodgerBlue !important;
   color: #ffffff;
+
+}
+.check_in{
+  margin: auto;
+  margin-top:30px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  /* border-radius: 3px; */
+  /* border: 2px solid black; */
+  background-color: #FFFFFF;
+  padding:70px;
+  height:100%;
+  border-radius: 5px;
+}
+#name_container{
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 25px;
+  margin-bottom: -25px;
+  color: #1CB105;
+}
+
+  input[type="submit"]{
+	background: #2A88AD;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+	font-size: 15px;
 }
 </style>
-<!--Make sure the form has the autocomplete function switched off:-->
-<form id="searchForm" autocomplete="off">
-  <div class="autocomplete" style="width:300px;">
-    <input id="team_name" type="text" name="team_name" placeholder="Team Name">
+<div class="check_in">
+  <form id="searchForm" autocomplete="off">
+    <div class="autocomplete" style="width:300px;">
+      <input id="team_name" type="text" name="team_name" placeholder="Team Name">
+    </div>
+    <input class="cbtn" type="submit" value="Search">
+  </form>
+  <div id="name_container">
+      <div><span id="first_name"></span> <span id="last_name"></span></div>
   </div>
-  <input class="cbtn" type="submit" value="Search">
-</form>
-<div id="name_container">
-    <div><span id="first_name"></span> <span id="last_name"></span></div>
+  <form id="verifyForm" autocomplete="off">
+
+    <div class="autocomplete" style="width:300px;">
+      <input id="passport" type="text" name="passport" placeholder="Team Leader Passport">
+    </div>
+    <input class = "cbtn" onclick='pageLoad(); clearList()' type="submit" value="Verify">
+    <div>
+      <span id="isFail">This passport number is incorrect.</span>
+    </div>
+
+  </form>
+
 </div>
-<form id="verifyForm" autocomplete="off">
+<!--Make sure the form has the autocomplete function switched off:-->
 
-  <div class="autocomplete" style="width:300px;">
-    <input id="passport" type="text" name="passport" placeholder="Team Leader Passport">
-  </div>
-  <input class = "cbtn" onclick='pageLoad(); clearList()' type="submit" value="Verify">
-  <div>
-    <span id="isFail">This passport number is incorrect.</span>
-  </div>
-
-</form>
 
 
 <script>
@@ -307,15 +356,4 @@ async function getTeam(){
 
 }
 var tempt =  getTeam();
-// var obj = {"1":5,"2":7,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}
-// var result = Object.keys(obj).map(function(key) {
-//   return [Number(key), obj[key]];
-// });
-
-// console.log(result);
-
-// var teams = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
-
-/*initiate the autocomplete function on the "myInput" element, and pass along the teams array as possible autocomplete values:*/
-// autocomplete(document.getElementById("myInput"), teams);
 </script>

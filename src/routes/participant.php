@@ -140,3 +140,32 @@ $app ->POST('/api/participants/teams/attendence',function(Request $request, Resp
         echo '{"error":{"text":'.$e->getMessage().'}}';
     }
 });
+
+// check if the team has already checked in
+$app ->post('/api/participants/teams/checked',function(Request $request, Response $response){
+    // $t_name = $request->getAttribute('tname');
+    $t_name  = $request->getParam('team_name');
+    $sql = "SELECT IF((SELECT is_show from participants where team_name = '$t_name' && is_leader=1) =1 ,'true','false') AS isValid;";
+
+    try{
+        $db = new db();
+        $db = $db->connect();
+        $stmt = $db->query($sql);
+        $isValid = $stmt->fetchALL(PDO::FETCH_OBJ);
+        $output =  $isValid[0];
+        // $result[0]['property']
+        // $db = null;
+        // print_r($output);
+        $array = get_object_vars($output);
+        // print_r($array['isValid']);
+
+        $result = $array['isValid'] === 'true'? true: false;
+        echo json_encode($isValid);
+
+        // echo '{"Success":{"text":'.strval($output).'}}';
+        // echo '{"Success":{"text":"DONE"}}';
+        // echo json_encode($isValid);
+    }catch(PDOException $e){
+        echo '{"error":{"text":'.$e->getMessage().'}}';
+    }
+});
