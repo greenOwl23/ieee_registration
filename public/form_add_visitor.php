@@ -47,7 +47,7 @@
     tform.addEventListener('submit',function(e){
         e.preventDefault();
         const formData = new FormData(this);
-        fetch('/apiTest/public/api/participants/visitor',{
+        fetch('../public/api/participants/visitor',{
             method:'post',
             body:formData
         }).then(function(response){

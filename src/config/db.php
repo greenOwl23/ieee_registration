@@ -1,10 +1,10 @@
 <?php
     class db{
         //Properties
-        private $dbhost = '192.168.64.2';
-        private $dbuser = 'root1';
-        private $dbpass = 'root1';
-        private $dbname = 'ieee';
+        private $dbhost = '192.168.1.227';
+        private $dbuser = 'root';
+        private $dbpass = '';
+        private $dbname = 'registration';
 
           //Connection
         public function connect(){

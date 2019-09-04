@@ -142,7 +142,7 @@ const tform = document.getElementById('searchForm');
     tform.addEventListener('submit',function(e){
         e.preventDefault();
         const formData = new FormData(this);
-        fetch('/apiTest/public/api/participants/teams',{
+        fetch('../public/api/participants/teams',{
             method:'post',
             body:formData
         }).then(function(response){
@@ -163,7 +163,7 @@ vform.addEventListener('submit',function(e){
     var tname = document.getElementById('team_name').value;
     const formData = new FormData(this);
     formData.append("team_name",tname);
-    fetch('/apiTest/public/api/participants/teams/verify',{
+    fetch('../public/api/participants/teams/verify',{
         method:'post',
         body:formData
     }).then(function(response){
@@ -307,7 +307,7 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing all the country names in the world:*/
-// fetch('http://localhost/apiTest/public/api/participants/teams')
+// fetch('http://localhost../public/api/participants/teams')
 //     .then(response => response.json())
 //     .then(data => {
 //         console.log(data);
@@ -319,13 +319,13 @@ function autocomplete(inp, arr) {
 //     });
 
 // async function getTeams(){
-//     let response = await fetch('http://localhost/apiTest/public/api/participants/teams');
+//     let response = await fetch('http://localhost../public/api/participants/teams');
 //     let data = await response.json();
 //     return data;
 // }
 
 // function getTeams(){
-//  fetch(`http://localhost/apiTest/public/api/participants/teams`)
+//  fetch(`http://localhost../public/api/participants/teams`)
 //   .then(function(response) {
 //     return response.json();
 //   })
@@ -337,14 +337,14 @@ function autocomplete(inp, arr) {
 
 // $.ajax({
 //   dataType: "json",
-//   url: http://localhost/apiTest/public/api/participants/teams,
+//   url: http://localhost../public/api/participants/teams,
 //   data: data,
 //   success: success
 // });
 
 // const tempt = getTeams().then(data =>console.log(data));
 var teams = [];
-const api_url = "/apiTest/public/api/participants/teams";
+const api_url = "../public/api/participants/teams";
 async function getTeam(){
     const response = await fetch(api_url);
     const data = await response.json();
