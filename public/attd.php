@@ -55,7 +55,7 @@
 
     //     $.ajax({
     //         type: "POST",
-    //         url: "/apiTest/public/api/participants/teams/attendence",
+    //         url: "../public/api/participants/teams/attendence",
     //         data: data,
     //     }).done(function(data) {
     //             console.log(data);
@@ -77,7 +77,7 @@ console.log(data);
 
 $.ajax({
     type: "POST",
-    url: "/apiTest/public/api/participants/teams/attendence",
+    url: "../public/api/participants/teams/attendence",
     data: data,
 }).done(function(data) {
         console.log(data);
@@ -102,7 +102,7 @@ aform.addEventListener('submit',function(e){
     const formData = new FormData(this);
     console.log(formData);
 
-    fetch('/apiTest/public/api/participants/teams/attendence',{
+    fetch('..K9982338/public/api/participants/teams/attendence',{
         method:'put',
         body:formData
     }).then(function(response){
