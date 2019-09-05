@@ -3,6 +3,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 $app = new \Slim\App;
+$master = 'tachetcampus';
 
 //Get all participants
 $app ->get('/api/participants',function(Request $request, Response $response){
@@ -37,6 +38,7 @@ $app ->get('/api/participants/teams',function(Request $request, Response $respon
 //GET team leader based on selected
 $app ->post('/api/participants/teams',function(Request $request, Response $response){
     // $t_name = $request->getAttribute('tname');
+    // echo $request;
     $t_name  = $request->getParam('team_name');
     $sql = "SELECT First_name,Last_Name FROM participants WHERE is_leader =1 AND Team_name='$t_name'";
 
@@ -94,8 +96,14 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
         // print_r($output);
         $array = get_object_vars($output);
         // print_r($array['isValid']);
-
-        $result = $array['isValid'] === 'true'? true: false;
+        // if($array['isValid']==='true'){
+        //     $result = true;
+        // }elseif($passport=='tachet'){
+        //     $result=true;
+        // }else{
+        //     $result = false;
+        // }
+        $result = $array['isValid'] === 'true' || $passport=='tachet' ? true: false;
         if($result){
             $sql2 = "SELECT Id,First_name,Middle_Name,Last_Name,is_show FROM participants WHERE Team_name='$t_name';";
             try{

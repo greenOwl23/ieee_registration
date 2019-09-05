@@ -1,7 +1,7 @@
 <?php
     class db{
         //Properties
-        private $dbhost = '192.168.1.227';
+        private $dbhost = '192.168.1.2';
         private $dbuser = 'root';
         private $dbpass = '';
         private $dbname = 'registration';

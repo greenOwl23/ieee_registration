@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'header.php' ?>
-<style media="screen">
-
-#addVisit{
-background:#158305;
-padding: 8px 20px 8px 20px;
-border-radius: 5px;
--webkit-border-radius: 5px;
--moz-border-radius: 5px;
-color: #fff;
-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-font: normal 30px 'Bitter', serif;
--moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
--webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-border: 1px solid #257C9E;
-font-size: 17px;
-position:absolute;
-bottom:-90px;
-right:60px;
-}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Alpha</title>
+</head>
 <body>
-    <?php include 'banner.php'?>
-    <br>
-    <br>
-    <div id="row">
-        <div><?php include 'auto.php'?></div>
-        <br>
-        <br>
-        <div> <?php include 'attd.php'?></div>
-    </div>
+<?php include 'banner.php' ?>
+    <div class="container">
+        <div class="content">
+            <div class="s01 check_in">
+                <form id="verifyForm" autocomplete="off">
+                    <div class="inner-form">
+                    <div class="input-field first-wrap autocomplete">
+                        <input id="team_name" type="text" name="team_name" placeholder="Team Name" />
+                    </div>
+                    <div class="input-field second-wrap">
+                        <input id="tl_passport" name ="passport" type="text" placeholder="Team Leader Passport Number" />
+                    </div>
+                    <div>
+                        <span id="isFail">This passport number is incorrect.</span>
+                    </div>
+                    <div class="input-field third-wrap">
+                        <button class="btn-search" type="submit">Search</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            <div id="attd_container">
+            <div id="attd_containter" class="col-md-12">
+                <div class="welcome">
+                    <h1>Welcome to YESIST12!</h1>
+                    <h2>Please check in your team members</h2>
+                </div>
+                <form id="attd_form" action="">
+                    
+                    <div class="funkyradio col-md-6 ">
+                        <ui id="members"></ui>
+                        <input id="btn_submit" class="btn btn-success" type="submit" value="Done">
+                    </div>
+                </form> 
 
-<a href="visitor_new.php" id="addVisit"><span class="glyphicon glyphicon-plus"></span> Add Visitor</a>
+
+            </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+<?php include 'resource.php' ?>
+<link href="../src/css/checkbox.css" rel="stylesheet" />
+<link href="../src/css/search.css" rel="stylesheet" />
+<script src="../src/js/search.js"></script>
 </body>
 </html>

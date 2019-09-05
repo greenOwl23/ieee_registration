@@ -168,9 +168,9 @@ vform.addEventListener('submit',function(e){
         body:formData
     }).then(function(response){
         return response.json();
-    }).then(function(json){
-        json.forEach(addMember);
-        console.log(json);
+    }).then(function(mList){
+        mList.forEach(addMember);
+        console.log(mList);
     }).catch(function (error){
         console.log(error);
 
@@ -195,12 +195,13 @@ function addMember(item,index){
 
   if(Is_show=="1"){
     document.getElementById("isFail").style.display='none';
-    document.getElementById("members").innerHTML += "<input checked type ='checkbox' name='"+id+"' id='"+id+"' data-toggle='toggle' data-onstyle='default'><label class='form-check-label' for='materialChecked2'>"+first_name +" " + last_name+"</label><br>" ;
+    document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' nname='"+id+"' id='"+id+"' checked/><label for='checkbox1'>"+first_name +" " + last_name+"</label></div>" ;
+    // document.getElementById("members").innerHTML += "<input checked type ='checkbox' name='"+id+"' id='"+id+"' data-toggle='toggle' data-onstyle='default'><label class='form-check-label' for='materialChecked2'>"+first_name +" " + last_name+"</label><br>" ;
     // <input type="checkbox" name="4" id="4" data-toggle="toggle" data-onstyle="default"  data-width="500%" >
 
   }else if(Is_show=="0"){
     document.getElementById("isFail").style.display='none'
-    document.getElementById("members").innerHTML +=  "<input unchecked type ='checkbox' name='"+id+"' id='"+id+"' data-toggle='toggle' data-onstyle='default'><label class='form-check-label' for='materialChecked2'>"+first_name +" " + last_name+"</label><br>" ;
+    document.getElementById("members").innerHTML +=  document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' nname='"+id+"' id='"+id+"' checked/><label for='checkbox1'>"+first_name +" " + last_name+"</label></div>" ;
   }else{
     document.getElementById("isFail").style.display='block';
     document.getElementById("attd_container").style.display='none';
