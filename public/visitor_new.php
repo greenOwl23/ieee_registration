@@ -6,32 +6,12 @@
 
 <body>
   <?php include 'banner.php'?>
-  <div class="reg">
-    <br>
-    <div class="form-style-10">
-  <h1>Welcome to IEEE YESIST12!<span></span></h1>
-  <form id="addForm">
-    <!-- <div class="section"><span>1</span>Name</div> -->
-    <div class="inner-wrap">
-        <label>First Name<input type="text" id="first_name" placeholder="Enter First Name" name="first_name" required /></label>
-        <label>Middle Name<input type="text" id="middle_name" placeholder="Enter Middle Name" name="middle_name" /></label>
-        <label>Last Name<input type="text" id="last_name" placeholder="Enter Last Name" name="last_name" required /></label>
-        <label>Email Address <input type="email" id="email" placeholder="Enter Email" name="email" required /></label>
-        <label>Phone Number <input type="text" id="phone_number" placeholder="Enter Phone Number" name="phone_number" required /></label>
-    </div>
-    <br>
-    <div class="button-section">
-     &nbsp;&nbsp;<input type="submit" name="Sign Up" value="Add"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<button onClick="refreshPage()" id="cancel">Cancel</button>
-     </body>
-     <span class="privacy-policy">
-     </span>
-    </div>
-  </form>
-</div>
+  <div class="container">
+  <div class="content">
+   <div class="test"></div>
   </div>
+  </div>
+  
 
   <script>
       const tform = document.getElementById('addForm');
@@ -44,11 +24,13 @@
           }).then(function(response){
               return response.json();
           }).then(function(json){
-            bootbox.alert({
-              message: "This alert can be dismissed by clicking on the background!",
-              backdrop: true
-            });
+            
             document.getElementById("addForm").reset();
+            // bootbox.alert({
+            //   message: "This alert can be dismissed by clicking on the background!",
+            //   backdrop: true
+            // });
+              // alert('Welcome and ');
               console.log(json);
           }).catch(function (error){
               console.log(error);
@@ -59,8 +41,28 @@
 function refreshPage(){
     window.location.reload();
 }
+
 </script>
-  </script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php include 'resource.php' ?>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
