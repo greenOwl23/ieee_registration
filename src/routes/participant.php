@@ -7,7 +7,7 @@ $master = 'tachetcampus';
 
 //Get all participants
 $app ->get('/api/participants',function(Request $request, Response $response){
-    $sql = "SELECT * FROM participants";
+    $sql = "SELECT * FROM participant_list";
 
     try{
         $db = new db();
@@ -22,7 +22,7 @@ $app ->get('/api/participants',function(Request $request, Response $response){
 });
 //Get all Team name and tleader name
 $app ->get('/api/participants/teams',function(Request $request, Response $response){
-    $sql = "SELECT DISTINCT Team_name FROM participants";
+    $sql = "SELECT DISTINCT Team_name FROM participant_list";
 
     try{
         $db = new db();
@@ -38,7 +38,7 @@ $app ->get('/api/participants/teams',function(Request $request, Response $respon
 
 //Get all Team name and tleader name
 $app ->get('/api/participants/teams/isShowed',function(Request $request, Response $response){
-    $sql = "SELECT DISTINCT Team_name FROM participants where is_show='1'";
+    $sql = "SELECT DISTINCT Team_name FROM participant_list where is_show='1'";
 
     try{
         $db = new db();
@@ -57,7 +57,7 @@ $app ->post('/api/participants/teams',function(Request $request, Response $respo
     // $t_name = $request->getAttribute('tname');
     // echo $request;
     $t_name  = $request->getParam('team_name');
-    $sql = "SELECT First_name,Last_Name FROM participants WHERE is_leader =1 AND Team_name='$t_name'";
+    $sql = "SELECT full_name FROM participant_list WHERE is_leader =1 AND Team_name='$t_name'";
 
     try{
         $db = new db();
@@ -71,7 +71,7 @@ $app ->post('/api/participants/teams',function(Request $request, Response $respo
     }
 });
 //add visitor
-$app ->post('/api/participants/visitor',function(Request $request, Response $response){
+$app ->post('/api/participant_list/visitor',function(Request $request, Response $response){
     $first_name  = $request->getParam('first_name');
     $middle_name = $request->getParam('middle_name');
     $last_name   = $request->getParam('last_name');
@@ -100,7 +100,7 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
     // $t_name = $request->getAttribute('tname');
     $t_name  = $request->getParam('team_name');
     $passport = $request->getParam('passport');
-    $sql = "SELECT IF((SELECT Passport_Number from participants where team_name = '$t_name' && is_leader=1) ='$passport' ,'true','false') AS isValid;";
+    $sql = "SELECT IF((SELECT Passport_Number from participant_list where team_name = '$t_name' && is_leader=1) ='$passport' ,'true','false') AS isValid;";
     try{
         $db = new db();
         $db = $db->connect();
@@ -121,7 +121,7 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
         // }
         $result = $array['isValid'] === 'true' || $passport=='tachetcampus' ? true: false;
         if($result){
-            $sql2 = "SELECT Id,First_name,Middle_Name,Last_Name,is_show FROM participants WHERE Team_name='$t_name';";
+            $sql2 = "SELECT Id,full_name,is_show,team_id FROM participant_list WHERE Team_name='$t_name';";
             try{
                 // $db = new db();
                 // $db1 = $db2->connect();
@@ -166,7 +166,7 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
 $app ->POST('/api/participants/teams/attendence',function(Request $request, Response $response){
     $id  = $request->getParam('id');
     $value  = $request->getParam('value');
-    $sql = "UPDATE participants SET is_show=$value where Id =$id";
+    $sql = "UPDATE participant_list SET is_show=$value where Id =$id";
 
     try{
         $db = new db();
@@ -184,7 +184,7 @@ $app ->POST('/api/participants/teams/attendence',function(Request $request, Resp
 $app ->post('/api/participants/teams/checked',function(Request $request, Response $response){
     // $t_name = $request->getAttribute('tname');
     $t_name  = $request->getParam('team_name');
-    $sql = "SELECT IF((SELECT is_show from participants where team_name = '$t_name' && is_leader=1) =1 ,'true','false') AS isValid;";
+    $sql = "SELECT IF((SELECT is_show from participant_list where team_name = '$t_name' && is_leader=1) =1 ,'true','false') AS isValid;";
 
     try{
         $db = new db();

@@ -32,6 +32,7 @@
             <div id="attd_containter" class="col-md-12">
                 <div class="welcome">
                     <h1>Welcome to YESIST12!</h1>
+                    <div class="teamID">Team ID: <mark> <span id="sp_team_id"></span> </mark></div>
                     <h2>Please check in your team members</h2>
                 </div>
                 <form id="attd_form" action="">

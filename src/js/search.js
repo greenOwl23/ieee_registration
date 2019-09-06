@@ -13,7 +13,7 @@ const tform = document.getElementById('team_name');
             return response.json();
         }).then(function(json){
             console.log(json);
-            document.getElementById("tl_passport").placeholder = json[0].First_name +" "+ json[0].Last_Name +"' Passport Number";
+            document.getElementById("tl_passport").placeholder = json[0].full_name+"' Passport Number";
 
         }).catch(function (error){
             console.log(error);
@@ -33,7 +33,7 @@ const tform = document.getElementById('team_name');
             return response.json();
         }).then(function(json){
             console.log(json);
-            document.getElementById("tl_passport").placeholder = json[0].First_name +" "+ json[0].Last_Name +"' Passport Number";
+            document.getElementById("tl_passport").placeholder = json[0].full_name +"' Passport Number";
         }).catch(function (error){
             console.log(error);
 
@@ -94,9 +94,11 @@ function addMember(item,index){
 
   var id = item.Id;
   var Is_show = item.is_show;
-  var first_name = item.First_name;
-  var middle_name = item.Middle_Name;
-  var last_name =item.Last_Name;
+  var full_name = item.full_name;
+  var team_id = item.team_id;
+  document.getElementById('sp_team_id').innerHTML=team_id;
+  // var middle_name = item.Middle_Name;
+  // var last_name =item.Last_Name;
   console.log(Is_show);
 
   if(Is_show=="1"){   
@@ -104,15 +106,15 @@ function addMember(item,index){
     document.getElementById("btn_search").value='Search';
     document.getElementById("btn_search").style.background='#0095DC';
     document.getElementById('attd_container').style.display="block";
-    document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"' checked/><label for='"+id+"'>"+first_name +" " + last_name+"</label></div>" ;
+    document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"' checked/><label for='"+id+"'>"+full_name +"</label></div>" ;
     // <input type="checkbox" name="4" id="4" data-toggle="toggle" data-onstyle="default"  data-width="500%" >
 
-  }else if(Is_show=="0"){
+  }else if(Is_show==""){
     // document.getElementById("isFail").style.display='none';
     document.getElementById("btn_search").value='Search';
     document.getElementById("btn_search").style.background='#0095DC';
     document.getElementById('attd_container').style.display="block";
-    document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"'/><label for='"+id+"'>"+first_name +" " + last_name+"</label></div>" ;
+    document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"'/><label for='"+id+"'>"+full_name +"</label></div>" ;
   }else{
     // document.getElementById("isFail").style.display='block';
     document.getElementById("btn_search").value='Incorrect';
@@ -228,6 +230,7 @@ async function getTeam(){
     teams.push(data[i].Team_name);
     };
     console.log(teams);
+    // teams =["Wired Technokrats", "BlueTree Technets", "Terra-Charites", "SM_SH", "Herbgiz", "Synchros", "TECHNO-WARRIORS", "Garuda Team", "Team Gravity", "Self Assistant", null, "Efficient Engineers", "The Originators", "Codestacks", "Carpooling Application", "PlantDroid Team", "Tech-Connect", "Handicapped Car", "Eye Interactions", "IT-TNI", "Vision Hackers", "Team_UoN", "Elon's Army", "We Stitch", "Team Vibro Vision", "UBITians", "Khagithapai", "Y Not Innovations", "BUET_Phoenix", "Millionnodes", "Technocrats", "Mechanizer", "I.H.E.R.D.", "Food For All | Nosh", "Techguy", "Tech Guys", "Team Positrons", "Smart Sandals", "Aqua Shield", "Nsu Animators", "Friends", "Varuna", "Sairam Rescuers", "Drona", "Nurtipro", "NSU Innovators", "Butterflies", "Nextgen Vaayudev", "Power Explorers", "Infinity Thoughts", "Technovative 1","Technovative 2", "Techastic", "Team MEEZ", "Black Dragons", "Miracle Roboteers", "Kuet_Manjaro", "SG Glove", "R Champs", "Vanguards", "Trigger Mindscape", "coderBoost++", "Kuet_Neurons", "RoboRemo", "Gandharva Nadi", "Techie Bees", "Kare Tech Guys", "Kare Spartan", "Data Diggers", "Edith", "Techno - Warriors", "Mechatrons08", "Smart Fishing Boat", "An Intelligent Assistive Aid For Visually Imp", "Intelligent Railway Track Cleaning Robot", "Techmates", "The Prodigies", "Green Lanterns", "Name_null", "Twilight Stars", "Nuts And Bolts", "Invention Addicted", "Team VR", "Domo Arigato", "Seenever", "Cygnus", "Isra", "RAPID", "WeOcean", "Infinity", "Medical and Tech King Mongkut", "MY DAD APP", "CAVITY CRUSHER", "JARVISS- Women and Child Safety", "Taser Heels For Women Security", "Village Engineer", "ROBO STEEL HEADS", "WORKSHOP", "Salaar Aftab", "THIRST RESOLVERS", "TRICK MONSTERS", "BINARY BLASTERS","TREND SETTERS","YOUNG BOFFINS","EKONA HS1188","FERMI","FISC.BD","ORSTED","KAVIN AND TEAM","Clean N Green","Innovators","Inception","The Pulverizers","Mind Benders","i.C.E.B.U."] ;
     autocomplete(document.getElementById("team_name"), teams);
 
 }

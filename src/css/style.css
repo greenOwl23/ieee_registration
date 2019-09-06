@@ -29,13 +29,16 @@ html{
 #attd_containter{
     align-items: center;
 }
-#attd_containter h1,h2{
+#attd_containter h1,h2,span,div{
     text-align: center;
 }
 #attd_containter h2{
-    margin-top: 0;
+    margin-top: 18px;
     font-size: 20px;
     font-weight: bold;
+}
+.teamID{
+    font-size: 25px;
 }
 #attd_form{
     height: 100%;
