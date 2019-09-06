@@ -1,5 +1,5 @@
 html{
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 #logo{
     width:100vw;
@@ -93,3 +93,68 @@ html{
     background-color:red;
     border-bottom: 1px solid #d4d4d4;
   }
+
+  #addForm input {
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+}
+.input-groupd {
+    position: relative;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+  }
+  #first_name {
+      width: 100%;
+  }
+
+
+  /* SRC: https://sabe.io/tutorials/how-to-create-modal-popup-box */
+  .cmodal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.cmodal-content {
+    /* width: 50vw;
+    height: 50vh; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-cmodal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
