@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'header.php' ?>
 <head>
     <link href="vis.css" rel="stylesheet" media="all">
 </head>
 
 <body>
-  <div class="overlay">
-
-  </div>
   <?php include 'banner.php'?>
   <div class="reg">
     <br>
@@ -41,7 +37,7 @@
       tform.addEventListener('submit',function(e){
           e.preventDefault();
           const formData = new FormData(this);
-          fetch('/apiTest/public/api/participants/visitor',{
+          fetch('../public/api/participants/visitor',{
               method:'post',
               body:formData
           }).then(function(response){
@@ -64,7 +60,7 @@ function refreshPage(){
 }
 </script>
   </script>
-
+<?php include 'resource.php' ?>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>

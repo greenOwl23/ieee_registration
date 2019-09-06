@@ -232,6 +232,26 @@ async function getTeam(){
 
 }
 var tempt =  getTeam();
+
+var teams_isShowed= [];
+const api_url_isShowed = "../public/api/participants/teams/isShowed";
+async function getTeam_isShowed(){
+    const response = await fetch(api_url_isShowed);
+    const data = await response.json();
+    for(var i = 0;i<data.length;i++){
+    teams_isShowed.push(data[i].Team_name);
+    };
+    console.log("SHOWOOWSHOSHOSHOHWOHWOS");
+    
+    console.log(teams_isShowed);
+    // autocomplete(document.getElementById("team_name"), teams);
+
+}
+var tempt_isShowed =  getTeam_isShowed();
+console.log(tempt_isShowed);
+
+
+
 function pageLoad()
 {
   $(document).ready(function(){

@@ -35,6 +35,23 @@ $app ->get('/api/participants/teams',function(Request $request, Response $respon
         echo '{"error":{"text":'.$e->getMessage().'}}';
     }
 });
+
+//Get all Team name and tleader name
+$app ->get('/api/participants/teams/isShowed',function(Request $request, Response $response){
+    $sql = "SELECT DISTINCT Team_name FROM participants where is_show='1'";
+
+    try{
+        $db = new db();
+        $db = $db->connect();
+        $stmt = $db->query($sql);
+        $teams = $stmt->fetchALL(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($teams);
+    }catch(PDOException $e){
+        echo '{"error":{"text":'.$e->getMessage().'}}';
+    }
+});
+
 //GET team leader based on selected
 $app ->post('/api/participants/teams',function(Request $request, Response $response){
     // $t_name = $request->getAttribute('tname');
