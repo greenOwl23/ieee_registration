@@ -23,7 +23,7 @@
                         <span id="isFail">This passport number is incorrect.</span>
                     </div>
                     <div class="input-field third-wrap">
-                        <button class="btn-search" type="submit">Search</button>
+                        <input id="btn_search" class="btn-search" type="submit" value="Search">
                     </div>
                     </div>
                 </form>

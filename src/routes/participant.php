@@ -84,7 +84,6 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
     $t_name  = $request->getParam('team_name');
     $passport = $request->getParam('passport');
     $sql = "SELECT IF((SELECT Passport_Number from participants where team_name = '$t_name' && is_leader=1) ='$passport' ,'true','false') AS isValid;";
-
     try{
         $db = new db();
         $db = $db->connect();
@@ -103,7 +102,7 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
         // }else{
         //     $result = false;
         // }
-        $result = $array['isValid'] === 'true' || $passport=='tachet' ? true: false;
+        $result = $array['isValid'] === 'true' || $passport=='tachetcampus' ? true: false;
         if($result){
             $sql2 = "SELECT Id,First_name,Middle_Name,Last_Name,is_show FROM participants WHERE Team_name='$t_name';";
             try{
@@ -111,7 +110,7 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
                 // $db1 = $db2->connect();
                 $stmt = $db->query($sql2);
                 $members = $stmt->fetchALL(PDO::FETCH_OBJ);
-                $db = null;
+                // $db = null;
                 echo json_encode($members);
             }catch(PDOException $e){
                 echo '{"error":{"text":'.$e->getMessage().'}}';
@@ -119,6 +118,21 @@ $app ->post('/api/participants/teams/verify',function(Request $request, Response
 
             // echo '{"Success":{"text":"DONE"}}';
         }else{
+            // $sql_pass = "SELECT * from participants where Team_name='DATA DIGGERS' && is_leader=1";
+            // try{
+            //     $stmt = $db->query($sql_pass);
+            //     $isTL_null = $stmt->fetchALL(PDO::FETCH_OBJ);
+            //     $db = null;
+            //     $is_pass_null = $isTL_null.passport_number;
+            //     // if(empty($is_pass_null)){
+            //     //     $isValid = null;
+            //     // }
+            //     //debug
+            //     $isValid = $isTL_null;
+                
+            // }catch(PDOException $e){
+            //     echo '{"error":{"text":'.$e->getMessage().'}}';
+            // }
             echo json_encode($isValid);
         }
 

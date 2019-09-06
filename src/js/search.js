@@ -57,9 +57,15 @@ vform.addEventListener('submit',function(e){
         console.log('CRAJDFLKSDs');
         
         console.log(mList);
-        for(member of mList){
+        if(mList !==null){
+          for(member of mList){
             addMember(member);
-        };
+          };
+        }else if(mList==null){
+          document.getElementById("btn_search").value='Unknown';
+          document.getElementById("btn_search").style.background='orange';
+        }
+        
         // mList.forEach(addMember);
         // console.log(mList);
     }).catch(function (error){
@@ -94,17 +100,23 @@ function addMember(item,index){
   console.log(Is_show);
 
   if(Is_show=="1"){   
-    document.getElementById("isFail").style.display='none';
+    // document.getElementById("isFail").style.display='none';
+    document.getElementById("btn_search").value='Search';
+    document.getElementById("btn_search").style.background='#0095DC';
     document.getElementById('attd_container').style.display="block";
     document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"' checked/><label for='"+id+"'>"+first_name +" " + last_name+"</label></div>" ;
     // <input type="checkbox" name="4" id="4" data-toggle="toggle" data-onstyle="default"  data-width="500%" >
 
   }else if(Is_show=="0"){
-    document.getElementById("isFail").style.display='none';
+    // document.getElementById("isFail").style.display='none';
+    document.getElementById("btn_search").value='Search';
+    document.getElementById("btn_search").style.background='#0095DC';
     document.getElementById('attd_container').style.display="block";
     document.getElementById("members").innerHTML += "<div class='funkyradio-success'><input type='checkbox' name='"+id+"' id='"+id+"'/><label for='"+id+"'>"+first_name +" " + last_name+"</label></div>" ;
   }else{
-    document.getElementById("isFail").style.display='block';
+    // document.getElementById("isFail").style.display='block';
+    document.getElementById("btn_search").value='Incorrect';
+    document.getElementById("btn_search").style.background='red';
     document.getElementById("attd_container").style.display='none';
   }
   pageLoad();
